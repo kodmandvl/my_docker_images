@@ -1,0 +1,21 @@
+####################################################################################################
+deployment:
+  metadata:
+    name: web
+  spec:
+    replicas: 3
+    template:
+      spec:
+        containers:
+          image:
+            name: kodmandvl/mynginx
+            tag: v5
+service:
+  metadata:
+    name: web-svc
+  spec:
+    type: ClusterIP # ClusterIP | NodePort | LoadBalancer
+    ports:
+      port: 8888
+      targetport: 8080
+####################################################################################################

@@ -1,0 +1,26 @@
+####################################################################################################
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.metadata.name }}
+spec:
+  replicas: {{ .Values.deployment.spec.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.metadata.name }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 100%
+  template:
+    metadata:
+      name: {{ .Values.deployment.metadata.name }}
+      labels:
+        app: {{ .Values.deployment.metadata.name }}
+    spec:
+      containers:
+      - name: {{ .Values.deployment.metadata.name }}
+        image: {{ .Values.deployment.spec.template.spec.containers.image.name }}:{{ .Values.deployment.spec.template.spec.containers.image.tag }}
+####################################################################################################
