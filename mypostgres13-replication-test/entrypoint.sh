@@ -163,6 +163,7 @@ archive_timeout = 900" >> ${PGDATA}/postgresql.conf
   echo Start pg5432 instance
   echo
   pg_ctl start -D ${PGDATA} -l /home/postgres/pg${PGPORT}.log
+  echo
   echo "Add parameters (port, cluster_name) to /pgdata/13/pg5435/postgresql.conf"
   echo "port = 5435
 cluster_name = 'pg5435'" >> /pgdata/13/pg5435/postgresql.conf
